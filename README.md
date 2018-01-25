@@ -7,6 +7,20 @@ I build a tiny system that people can use their smart phone to control light. Be
 
 Table of contents
 =================
+- [Home-Lighting](#home-lighting)
+- [Table of contents](#table-of-contents)
+- [I.Acknowledge](#iacknowledge)
+- [II.Solution](#iisolution)
+- [III.Prerequisites](#iiiprerequisites)
+  * [III.1.Arduino IDE](#iii1arduino-ide)
+  * [III.2.MIT App Inventor 2](#iii2mit-app-inventor-2)
+- [IV.Design architecture](#ivdesign-architecture)
+  * [IV.1.Overview](#iv1overview)
+  * [IV.2.Hardware](#iv2hardware)
+  * [IV.3.Firmware](#iv3firmware)
+  * [IV.4.Software](#iv4software)
+- [V.Deployment](#vdeployment)
+- [VI.Result](#viresult)
 
 
 I.Acknowledge
