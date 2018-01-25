@@ -31,16 +31,17 @@ void setup(void){
  *	Loop
  *****************************************************************************/
 void loop(void){
+  /* Server service */
   server.handleClient();
   
   /* For calib ADC */
   while (Serial.available() > 0) {
-    digitalWrite(PIN_LED, 1);
-    ANALOG_BUFF_LEN = Serial.parseInt();
-    ANALOG_THRES = Serial.parseInt();
-    Serial.println(ANALOG_BUFF_LEN);
-    Serial.println(ANALOG_THRES);
-    digitalWrite(PIN_LED, 0);
+      digitalWrite(PIN_LED, 1);
+      ANALOG_BUFF_LEN = Serial.parseInt();
+      ANALOG_THRES = Serial.parseInt();
+      Serial.println(ANALOG_BUFF_LEN);
+      Serial.println(ANALOG_THRES);
+      digitalWrite(PIN_LED, 0);
   }
 }
 

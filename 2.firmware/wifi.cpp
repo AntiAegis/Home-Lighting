@@ -8,8 +8,8 @@
  * Global
  *****************************************************************************/
  /* SSID and password */
-const char* ssid = "Happy";
-const char* password = "19630808";
+const char* ssid = "xxxxx";
+const char* password = "xxxxxxxx";
 
 /* Server object */
 ESP8266WebServer server(80);

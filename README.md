@@ -48,16 +48,11 @@ IV.Design architecture
 ======================
 IV.1.Overview
 -------------
-My system has three main objects: ***Micro-controller (MCU)***, ***Light***, and ***Smart phone***.
+My system has three main objects: ***Micro-controller***, ***Light***, and ***Smart phone***.
 
-***MCU*** is the heart of my system. It carries three core functions:
-	* Communicating with Smart phone via the Internet.
-	* Controlling light (on/off), following the request from Smart phone.
-	* Reading the state of light and telling this state to Smart phone.
+***MCU*** is the heart of my system. It carries three core functions: Communicating with Smart phone via the Internet. Controlling light (on/off), following the request from Smart phone. Reading the state of light and telling this state to Smart phone.
 
-***Smart phone*** plays as a GUI to users, which keeps two functions:
-	* Querying MCU to tell it the state of light.
-	* Sending control request to MCU to turn on/off the light.
+***Smart phone*** plays as a GUI to users, which keeps two functions: Querying MCU to tell it the state of light. Sending control request to MCU to turn on/off the light.
 
 ***Light*** is the controlled object by MCU directly and by Smart phone indirectly.
 
@@ -92,12 +87,12 @@ In the ***WiFi*** part, it continue being differentiated into two sub-parts, ***
 
 <img src="pictures/architecture/fw/0.http-server.png" alt="Drawing" style="width: 700px;"/>
 
-The ***Control*** part consists of ***Read Current sensor*** and ***On/Off Relay***. ***Read Current sensor*** means *reading ADC* to obtain raw value and *signal processing* to extract information whether the light is on or off. Because the AC sensitivity of Current sensor ASC712 is 180~190 mV/A and my light consumes 20W at 220VAC, so the rms current maybe 0.091A, corresponding to 46.3~48.9mVpp or 9~10values changing at the ADC signal. You can verify my result based on following formulas.
+The ***Control*** part consists of ***Read Current sensor*** and ***On/Off Relay***. ***Read Current sensor*** means *reading ADC* to obtain raw value and *signal processing* to extract information whether the light is on or off. Because the AC sensitivity of Current sensor ASC712 is 180-190 mV/A and my light consumes 20W at 220VAC, so the rms current maybe 0.091A, corresponding to 46.3-48.9mVpp or 9-10values changing at the ADC signal. You can verify my result based on following formulas.
 
-\begin{align}
+$$
 V_{pp} = 2.V_p = 2.k.I_p = 2.k.I_{rms}.\sqrt2 = 2.k.\sqrt2.P/V_{rms} \\
 val_{pp} = V_{pp}.1024/5\\
-\end{align}
+$$
 where, $k$ is the AC sensitivity of Current sensor ASC712 (180~190 mV/A).
 
 When the current through ASC712 is zero, the voltage at the output is normally 2.5VDC, corresponding to 512 units. However, in practical, due to voltage drift or noise, the zero-position can be different from ideal. Thus, to eliminate the DC-offset, I suggest peak-to-peak measure method, which just examines the maximum and the minimum value of the ADC output, which can be clearly realized from my above formulas. I will conduct sampling experiment to know the average differetiation between the maximum and the minimum value when the light is turned on/off. Subsequently, I choose a threshold to make decision about state of light. The result of sampling experiment is revealed in two following pictures.
@@ -153,4 +148,15 @@ V.Deployment
 
 VI.Result
 =========
+Hardware board:
+<img src="pictures/Hardware-board.jpg" alt="Drawing" style="width: 700px;"/>
 
+Hardware board connected to home electric network:
+<img src="pictures/Connect-to-electric-network.jpg" alt="Drawing" style="width: 700px;"/>
+
+Mode test (Test handy and automatic modes):
+https://youtu.be/6kZmtNLPiIU
+
+Alarm tests (On and Off alarm):
+https://youtu.be/Bq2uVIg-Ajc
+https://youtu.be/PRSb5gKpI5M
