@@ -89,9 +89,9 @@ In the ***WiFi*** part, it continue being differentiated into two sub-parts, ***
 
 The ***Control*** part consists of ***Read Current sensor*** and ***On/Off Relay***. ***Read Current sensor*** means *reading ADC* to obtain raw value and *signal processing* to extract information whether the light is on or off. Because the AC sensitivity of Current sensor ASC712 is 180-190 mV/A and my light consumes 20W at 220VAC, so the rms current maybe 0.091A, corresponding to 46.3-48.9mVpp or 9-10values changing at the ADC signal. You can verify my result based on following formulas.
 
-$$ V_{pp} = 2.V_p = 2.k.I_p = 2.k.I_{rms}.\sqrt2 = 2.k.\sqrt2.P/V_{rms} $$  
-$$ val_{pp} = V_{pp}.1024/5 $$  
-where, $$k$$ is the AC sensitivity of Current sensor ASC712 (180~190 mV/A).
+![eq1](pictures/eq1.gif)  
+![eq2](pictures/eq2.gif)  
+where, k is the AC sensitivity of Current sensor ASC712 (180~190 mV/A).
 
 When the current through ASC712 is zero, the voltage at the output is normally 2.5VDC, corresponding to 512 units. However, in practical, due to voltage drift or noise, the zero-position can be different from ideal. Thus, to eliminate the DC-offset, I suggest peak-to-peak measure method, which just examines the maximum and the minimum value of the ADC output, which can be clearly realized from my above formulas. I will conduct sampling experiment to know the average differetiation between the maximum and the minimum value when the light is turned on/off. Subsequently, I choose a threshold to make decision about state of light. The result of sampling experiment is revealed in two following pictures.
 <img src="pictures/calib/sample-off.png" alt="Drawing" style="width: 700px;"/>
