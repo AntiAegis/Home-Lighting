@@ -2,7 +2,7 @@
 ```Why do we always seek for thing too far?```
 
 I build a tiny system that people can use their smart phone to control light. Besides, my system also has an alarm feature, which notifies users to turn on/off light at specific times in a day.
-##### Keyword: IOT, Smart home, ESP8266, Light control
+#### Keyword: IOT, Smart home, ESP8266, Light control
 
 
 Table of contents
